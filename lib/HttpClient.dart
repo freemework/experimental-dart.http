@@ -10,13 +10,13 @@ import 'package:http/src/response.dart';
 import 'package:freemework/freemework.dart';
 
 class HttpClientException extends FreemeworkException {
-  HttpClientException([String message, FreemeworkException innerException])
+  HttpClientException([String? message, FreemeworkException? innerException])
       : super(message, innerException);
 }
 
 class HttpClientProtocolException extends HttpClientException {
   final int statusCode;
-  final String statusDescription;
+  final String? statusDescription;
   // private readonly _responseHeaders: http.IncomingHttpHeaders;
   // private readonly _responseBody: Buffer;
 
@@ -46,7 +46,7 @@ class HttpClientCommunicationException extends HttpClientException {
 class HttpClient {
   final Client _wrap;
 
-  HttpClient({Client wrap}) : _wrap = wrap ?? Client();
+  HttpClient({Client? wrap}) : _wrap = wrap ?? Client();
 
   void close() => _wrap.close();
 
@@ -70,7 +70,7 @@ class HttpClient {
   Future<Response> delete(
     ExecutionContext executionContext,
     Uri url, {
-    Map<String, String> headers,
+    Map<String, String>? headers,
   }) {
     return handleResponse(_wrap.delete(url, headers: headers));
   }
@@ -78,7 +78,7 @@ class HttpClient {
   Future<Response> get(
     ExecutionContext executionContext,
     Uri url, {
-    Map<String, String> headers,
+    Map<String, String>? headers,
   }) {
     return handleResponse(_wrap.get(url, headers: headers));
   }
@@ -86,7 +86,7 @@ class HttpClient {
   Future<Response> head(
     ExecutionContext executionContext,
     Uri url, {
-    Map<String, String> headers,
+    Map<String, String>? headers,
   }) {
     return handleResponse(_wrap.head(url, headers: headers));
   }
@@ -100,9 +100,9 @@ class HttpClient {
   Future<Response> post(
     ExecutionContext executionContext,
     Uri url, {
-    Map<String, String> headers,
+    Map<String, String>? headers,
     body,
-    Encoding encoding,
+    Encoding? encoding,
   }) {
     return handleResponse(_wrap.post(
       url,
@@ -115,9 +115,9 @@ class HttpClient {
   Future<Response> put(
     ExecutionContext executionContext,
     Uri url, {
-    Map<String, String> headers,
+    Map<String, String>? headers,
     body,
-    Encoding encoding,
+    Encoding? encoding,
   }) {
     return handleResponse(_wrap.put(
       url,

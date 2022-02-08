@@ -5,14 +5,14 @@ import 'package:test/test.dart';
 
 void main() {
   group('Simple requests', () {
-    HttpClient httpClient;
+    HttpClient? httpClient;
 
     setUp(() {
       httpClient = HttpClient();
     });
 
     test('GET html', () async {
-      var resposnse = await httpClient.get(ExecutionContext.EMPTY,
+      var resposnse = await httpClient!.get(ExecutionContext.EMPTY,
           Uri.parse('https://pub.dev/packages/freemework_http'));
 
       expect(resposnse.statusCode, 200);
