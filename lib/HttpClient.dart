@@ -13,8 +13,8 @@ import 'package:http/src/base_request.dart';
 
 import 'package:freemework/freemework.dart';
 
-class HttpClientException extends FrameworkException {
-  HttpClientException([String message, FrameworkException innerException])
+class HttpClientException extends FreemeworkException {
+  HttpClientException([String message, FreemeworkException innerException])
       : super(message, innerException);
 }
 
@@ -43,7 +43,7 @@ class HttpClientProtocolException extends HttpClientException {
 /// Such a DNS lookup issues, TCP connection issues, etc...
 ///
 class HttpClientCommunicationException extends HttpClientException {
-  HttpClientCommunicationException(FrameworkException innerException)
+  HttpClientCommunicationException(FreemeworkException innerException)
       : super('Cannot establish connection.', innerException);
 }
 
@@ -61,7 +61,7 @@ class HttpClient {
       response = await responseFuture;
     } catch (e) {
       throw HttpClientCommunicationException(
-          FrameworkException.wrapIfNeeded(e));
+          FreemeworkException.wrapIfNeeded(e));
     }
 
     final statusCode = response.statusCode;
