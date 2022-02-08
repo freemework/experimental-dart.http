@@ -2,14 +2,10 @@
 // file for details. All rights reserved. Use of this source code is governed
 // by a BSD-style license that can be found in the LICENSE file.
 
-import 'dart:typed_data';
-
 import 'dart:convert';
 
 import 'package:http/http.dart' show Client;
-import 'package:http/src/streamed_response.dart';
 import 'package:http/src/response.dart';
-import 'package:http/src/base_request.dart';
 
 import 'package:freemework/freemework.dart';
 

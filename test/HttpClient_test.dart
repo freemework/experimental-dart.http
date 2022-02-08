@@ -1,31 +1,21 @@
-// import 'package:cancellation/cancellation.dart';
-// import 'package:test/test.dart';
+import 'package:freemework/freemework.dart';
+// import 'package:freemework_cancellation/freemework_cancellation.dart';
+import 'package:freemework_http/freemework_http.dart';
+import 'package:test/test.dart';
 
-// void main() {
-//   group('SimpleCancellationTokenSource tests', () {
-//     SimpleCancellationTokenSource cts;
+void main() {
+  group('Simple requests', () {
+    HttpClient httpClient;
 
-//     setUp(() {
-//       cts = SimpleCancellationTokenSource();
-//     });
+    setUp(() {
+      httpClient = HttpClient();
+    });
 
-//     test('Should cancel two listeners', () {
-//       bool cancel1 = false;
-//       bool cancel2 = false;
+    test('GET html', () async {
+      var resposnse = await httpClient.get(ExecutionContext.EMPTY,
+          Uri.parse('https://pub.dev/packages/freemework_http'));
 
-//       final token = cts.token;
-
-//       token.addCancelListener(() {
-//         cancel1 = true;
-//       });
-//       token.addCancelListener(() {
-//         cancel2 = true;
-//       });
-
-//       cts.cancel();
-
-//       expect(cancel1, isTrue);
-//       expect(cancel2, isTrue);
-//     });
-//   });
-// }
+      expect(resposnse.statusCode, 200);
+    });
+  });
+}
